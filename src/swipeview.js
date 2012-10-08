@@ -224,6 +224,11 @@ var SwipeView = (function (window, document) {
 			}
 			
 			this.__flip();
+			// Hide the next page if we decided to disable looping
+			if (!this.options.loop) {
+				this.masterPages[0].style.visibility = '';
+				this.__checkPosition();
+			}
 		},
 		
 		next: function () {
