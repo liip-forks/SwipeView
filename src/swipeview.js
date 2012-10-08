@@ -66,7 +66,8 @@ var SwipeView = (function (window, document) {
 				numberOfPages: 3,
 				snapThreshold: null,
 				hastyPageFlip: false,
-				loop: true
+				loop: true,
+				touchOffset: [0, 0]
 			};
 		
 			// User defined options
@@ -176,6 +177,10 @@ var SwipeView = (function (window, document) {
 		updatePageCount: function (n) {
 			this.options.numberOfPages = n;
 			this.maxX = -this.options.numberOfPages * this.pageWidth + this.wrapperWidth;
+		},
+
+		updateTouchOffset: function (x, y) {
+			this.options.touchOffset = [x, y];
 		},
 		
 		goToPage: function (p) {
@@ -291,14 +296,15 @@ var SwipeView = (function (window, document) {
 			this.initiated = true;
 			this.moved = false;
 			this.thresholdExceeded = false;
-			this.startX = point.pageX;
-			this.startY = point.pageY;
-			this.pointX = point.pageX;
-			this.pointY = point.pageY;
+			this.startX = point.pageX - this.options.touchOffset[0];
+			this.startY = point.pageY - this.options.touchOffset[1];
+			this.pointX = point.pageX - this.options.touchOffset[0];
+			this.pointY = point.pageY - this.options.touchOffset[1];
 			this.stepsX = 0;
 			this.stepsY = 0;
 			this.directionX = 0;
 			this.directionLocked = false;
+			this.updateTouchOffset(0, 0);
 			
 /*			var matrix = getComputedStyle(this.slider, null).webkitTransform.replace(/[^0-9-.,]/g, '').split(',');
 			this.x = matrix[4] * 1;*/
