@@ -1,0 +1,22 @@
+{
+  "name": "swipeview",
+  "version": "1.0.0",
+  "author": "cubiq",
+  "description": "Virtually infinite loop-able horizontal carousel for desktop and mobile browsers.",
+  "contributors": [ 
+    {
+      "name": "cubiq"
+    } 
+  ],
+  "main": "./src/swipeview",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cubiq/SwipeView.git"
+  },
+  "keywords": [
+    "swipeview",
+    "swipe",
+    "transition"
+  ],
+  "license": "MIT"
+}
